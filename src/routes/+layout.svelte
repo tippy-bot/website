@@ -6,7 +6,7 @@
 
 <Navbar />
 
-<div class="min-h-screen pt-32">
+<div class="min-h-screen pt-8 md:pt-16 3xl:pt-20">
 	<slot />
 </div>
 

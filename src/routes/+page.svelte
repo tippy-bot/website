@@ -7,4 +7,3 @@
 <div class="h-3 w-full dark:bg-[#1C1447] bg-[#C0B8EB]" />
 
 <div class="min-h-screen w-full bg-secondary-default py-48" />
-
