@@ -13,8 +13,10 @@
 					totalShards={data.health.totalShards}
 					shardsOnline={data.health.shardsOnline}
 				/>
-				<div class="bw-full rounded-md mt-2 md:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-2 md:gap-3">
-					{#each data.health.shards as shard, i}
+				<div
+					class="rounded-md mt-2 md:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-2 md:gap-3"
+				>
+					{#each data.health.shards as shard}
 						<Shard {shard} />
 					{/each}
 				</div>

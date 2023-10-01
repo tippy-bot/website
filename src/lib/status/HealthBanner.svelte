@@ -6,16 +6,18 @@
 	export let totalShards: number | undefined = undefined;
 	export let shardsOnline: number | undefined = undefined;
 
-    function shardOnlineStyle(totalShards: number | undefined, shardsOnline: number | undefined): string {
-        if (shardsOnline === undefined || totalShards === undefined)
-            return "";
+	function shardOnlineStyle(
+		totalShards: number | undefined,
+		shardsOnline: number | undefined
+	): string {
+		if (shardsOnline === undefined || totalShards === undefined) return '';
 
-        if (shardsOnline < totalShards) {
-            return 'text-yellow-400 dark:text-yellow-300';
-        } else {
-            return 'text-green-500 dark:text-green-400';
-        }
-    }
+		if (shardsOnline < totalShards) {
+			return 'text-yellow-400 dark:text-yellow-300';
+		} else {
+			return 'text-green-500 dark:text-green-400';
+		}
+	}
 </script>
 
 <div class="flex justify-center w-full flex-col">
@@ -27,7 +29,9 @@
 				<InfoCircleSolid slot="icon" class="w-4 h-4 my-1 ml-0 mr-3" />
 				<span class="font-medium">Tippy is online!</span>
 			</div>
-            <span class="{shardOnlineStyle(totalShards, shardsOnline)}">{shardsOnline}/{totalShards} shards online!</span>
+			<span class={shardOnlineStyle(totalShards, shardsOnline)}
+				>{shardsOnline}/{totalShards} shards online!</span
+			>
 		</Alert>
 	{:else}
 		<Alert

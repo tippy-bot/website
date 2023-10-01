@@ -11,6 +11,7 @@
 		DropdownItem
 	} from 'flowbite-svelte';
 	import { ChevronDownSolid } from 'flowbite-svelte-icons';
+	import { PUBLIC_INVITE_URL, PUBLIC_SUPPORT_URL } from '$env/static/public';
 	import { page } from '$app/stores';
 	$: activeUrl = $page.url.pathname;
 </script>
@@ -19,7 +20,7 @@
 	let:hidden
 	let:toggle
 	color="none"
-	class="border-b-accent-800 border-b-[1px]"
+	class="border-b-accent-800 border-b-[1px] bg-background-default"
 	navDivClass="mx-auto flex flex-wrap justify-between items-center px-4 md:px-20"
 >
 	<NavBrand href="/">
@@ -32,8 +33,12 @@
 			<Button
 				class="ml-2 pl-3 hidden md:flex bg-secondary-300 hover:bg-secondary-400 focus:ring-secondary-500 dark:bg-secondary-600 hover:dark:bg-secondary-700 focus:dark:ring-secondary-800"
 			>
-				<img src="/images/tippy-logo.png" class="mr-2 p-0 h-4 sm:h-6" alt="Tippy Logo" />
-				Tippy
+				<img
+					src={$page.data.session?.user?.image}
+					class="mr-2 p-0 h-4 sm:h-6 rounded-full"
+					alt="Tippy Logo"
+				/>
+				{$page.data.session?.user?.name}
 				<ChevronDownSolid class="w-3 h-3 ml-2 mt-1 text-white dark:text-white" />
 			</Button>
 			<Dropdown>
@@ -58,7 +63,10 @@
 		<NavLi href="/docs">Docs</NavLi>
 		<NavLi href="/premium">Premium</NavLi>
 		<NavLi href="/status">Status</NavLi>
-		<NavLi href="https://discord.gg/JfsU5Zk" target="_blank">Support</NavLi>
+		<NavLi href={PUBLIC_SUPPORT_URL} target="_blank">Support</NavLi>
+		<NavLi href={PUBLIC_INVITE_URL} target="_blank" class="!text-accent-600 hover:!text-text-default dark:!text-accent-200 dark:hover:!text-white"
+			>Invite Tippy</NavLi
+		>
 		{#if activeUrl == '/dashboard'}
 			<NavLi
 				href="/signout"
@@ -66,8 +74,8 @@
 			>
 				<span class="text-right">Sign out</span>
 				<div class="flex">
-					Tippy
-					<img src="/images/tippy-logo.png" class="ml-2 p-0 h-6 sm:h-6" alt="Tippy Logo" />
+					{$page.data.session?.user?.name}
+					<img src={$page.data.session?.user?.image} class="ml-2 p-0 h-6 sm:h-6" alt="Tippy Logo" />
 				</div>
 			</NavLi>
 		{:else}
